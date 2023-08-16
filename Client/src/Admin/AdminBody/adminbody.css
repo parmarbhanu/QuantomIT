@@ -11,6 +11,8 @@
     padding: 20px 40px;
     border-radius: 8%;
 }
+
+
 .single-admin-option:hover{
     background-color: #666;
     cursor: pointer;
