@@ -9,7 +9,6 @@ const Experimentbox = (props) => {
 
   console.log(props.imgUrl)
   return (
-    
     <div className='houseBox'>
       <div className="houseBox-body">
         <div className="houseBox-imgSection">    
