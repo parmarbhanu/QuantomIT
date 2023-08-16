@@ -15,8 +15,10 @@ const Single = () => {
     });
   };   
 
+
   // console.log(content)
 
+  
 useEffect(() => {
     blogapi();
 }, []);
