@@ -15,7 +15,7 @@ const signChange = () => {
 
 const [blogs, setblogs] = useState([]);
 const apicall=async ()=>{
-    await axios.get("/blog/allblogs").then((res) => { setblogs(res.data) });
+    await axios.get("http://localhost:5000/blog/allblogs").then((res) => { setblogs(res.data) });
   }
 
   useEffect(() => {

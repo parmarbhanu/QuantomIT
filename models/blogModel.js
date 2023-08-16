@@ -25,6 +25,10 @@ const BlogSchema= new mongoose.Schema({
         required: true
         }
 ],
+imgUrl: {
+    type: String,
+  required: true
+      },
     safety:{
         type:String,
         required: true

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Experimentbox from './Experimentbox'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -12,13 +13,16 @@ const Home = () => {
     apicall();
   }, [])
 
+
   return (
-    <div>
-    
+    <div >
+     <button> <Link to="/login">Login</Link></button>  
+     <div className='displaynew'>
      {exp.map((item) => {
-        return  <Experimentbox    nameofexp={item.nameofexp} description={item.description} />  })}
+      
+        return  <Experimentbox  id={item._id} nameofexp={item.nameofexp} imgUrl={item.imgUrl} />  })}
   
-    
+     </div>
     </div>
   )
 }
@@ -26,4 +30,3 @@ const Home = () => {
 export default Home
 
 
-{/* <img  className='popupimg' src={item?.imgUrl} alt="foto" />  */}

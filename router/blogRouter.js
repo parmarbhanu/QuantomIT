@@ -5,13 +5,14 @@ const Blog=require("../models/blogModel")
 // add new blog
 router.post("/addblog", async (req, res) => {
     
-    const { nameofexp,description,deffcuilty,subject,materiallist,safety,instruction} = req.body;
-    console.log(req.body)
+    const { nameofexp,description,deffcuilty,subject,imgUrl,materiallist,safety,instruction} = req.body;
+    // console.log(req.body)
     const newblog = new Blog({
         nameofexp,
         description,
         deffcuilty,
          subject,
+         imgUrl,
          materiallist,
          safety,
          instruction

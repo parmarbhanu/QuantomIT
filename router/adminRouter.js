@@ -64,8 +64,8 @@ router.post("/register", async (req, res) => {
 // log in admin
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
-    // console.log(req.body)
+    const {email, password } = req.body;
+    console.log(req.body)
     // console.log(req.body)
     if (!email || !password)
       return res
@@ -75,12 +75,12 @@ router.post("/login", async (req, res) => {
     const existingUser = await User.findOne({ email });
     // console.log(existingUser)
     if (!existingUser)
-      return res.status(401).json({ errorMessage: "Wrong cradentials." });
+      return res.status(401).json({ errorMessage: "Wrong email." });
 
     const passwordCorrect = await bcrypt.compare(password,existingUser.pass);
     // console.log(passwordCorrect)
     if (!passwordCorrect)
-      return res.status(401).json({ errorMessage: "Wrong email or password." });
+      return res.status(401).json({ errorMessage: "Wrong password." });
    
       // sign the token
 
@@ -102,7 +102,7 @@ router.post("/login", async (req, res) => {
       .send();
   } catch (err) {
     console.error(err);
-    res.status(400).send(err);
+    res.status(402).send(err);
   }
 });
 
@@ -117,7 +117,7 @@ router.get("/logout", (req, res) => {
     .send();
 });
 
-router.get("/isauthenticated", (req, res) => {
+router.get("/isauth", (req, res) => {
   // console.log(req.cookies)
   try {
     const token = req.cookies.token;

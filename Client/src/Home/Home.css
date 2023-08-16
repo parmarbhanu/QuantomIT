@@ -1,6 +1,6 @@
 .houseBox{
     /* height: 56vh; */
-
+   /* display: grid; */
     margin: 5vh 2vw;
     width: 27%;
     /* width: 50%; */
@@ -12,11 +12,17 @@
     background-color: white;
 }
 
-
-.houseBox-body{
+.displaynew{
     display: grid;
+    grid-template-columns: auto auto auto ;
+    /* width: 25%; */
 }
+
+/* .houseBox-body{
+    display: grid;
+} */
 .houseBox-imgSection{
+
     position: relative;
     color: aliceblue;
     height: 200px;

@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
 import './Home.css'
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import Single from './Single';
 
+ 
 const Experimentbox = (props) => {
+  const navigate=useNavigate();
+
+  // console.log(props.imgUrl)
   return (
-<div className='houseBox'>
+    
+    <div className='houseBox'>
       <div className="houseBox-body">
-        <div className="houseBox-imgSection">
-            <div className="houseBox-top-tag-box">
-                {`${props.title}`}
-            </div>
-       
-                {/* <img src={props.houseboximgUrl} alt="house ki image" onClick={()=> {navigate(`/housepreview/${props.id}`)}}/> */}
-               
+        <div className="houseBox-imgSection">    
+                <img src={props.imgUrl} alt="exp image" onClick={()=> {navigate(`/Single/${props.id}`)}}/>
             <div className="houseBox-imgsection-textArea">
-                <p> { props.Purpose}</p>
+                <p> { props.nameofexp}</p>
             </div>
         </div>
       </div>
+    
     </div>
   )
 }
