@@ -65,19 +65,17 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const {email, password } = req.body;
-    console.log(req.body)
+    // console.log(req.body)
     // console.log(req.body)
     if (!email || !password)
       return res
         .status(400)
         .json({ errorMessage: "Please enter all required fields." });
-
     const existingUser = await User.findOne({ email });
     // console.log(existingUser)
     if (!existingUser)
       return res.status(401).json({ errorMessage: "Wrong email." });
-
-    const passwordCorrect = await bcrypt.compare(password,existingUser.pass);
+    const passwordCorrect = await bcrypt.compare(password,existingUser.password);
     // console.log(passwordCorrect)
     if (!passwordCorrect)
       return res.status(401).json({ errorMessage: "Wrong password." });
