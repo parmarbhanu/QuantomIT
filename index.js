@@ -31,6 +31,7 @@ app.use("/blog", require("./router/blogRouter"));
           
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 
+
 const path=require("path");
 app.use(express.static('client/build'));
  app.get('*', (req, res) => {
