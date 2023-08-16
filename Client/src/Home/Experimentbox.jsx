@@ -7,7 +7,7 @@ import Single from './Single';
 const Experimentbox = (props) => {
   const navigate=useNavigate();
 
-  // console.log(props.imgUrl)
+  console.log(props.imgUrl)
   return (
     
     <div className='houseBox'>

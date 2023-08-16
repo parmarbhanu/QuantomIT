@@ -34,7 +34,7 @@ const apicall=async ()=>{
       <div className="blogs">
       <h2>List Of Experiment</h2>
          {blogs.map((item) => {
-           return <Singleblog id={item._id} nameofexp={item.nameofexp} description={item.description} deffcuilty={item.deffcuilty} Rating={item.Rating}  subject={item.subject}  instruction={item.instruction} materiallist={item.materiallist}  safety={item.safety}/>
+           return <Singleblog id={item._id} nameofexp={item.nameofexp} imgUrl={item.imgUrl} description={item.description} deffcuilty={item.deffcuilty} Rating={item.Rating}  subject={item.subject}  instruction={item.instruction} materiallist={item.materiallist}  safety={item.safety}/>
           })}
   
       </div>

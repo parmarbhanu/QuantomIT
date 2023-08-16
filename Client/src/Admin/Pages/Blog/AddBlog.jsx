@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { v4 } from 'uuid';
 import { storage } from '../../../Firebase';
-import {getDownloadURL, listAll, ref, uploadBytes} from 'firebase/storage';
+import {getDownloadURL, listAll, ref,uploadString, uploadBytes} from 'firebase/storage';
 
 const AddBlog = () => {
   
@@ -14,14 +14,14 @@ const AddBlog = () => {
        Rating:"",
        subject:"",
        imgUrl:"",
-        materiallist:[],
+       materiallist:[],
        safety:"",
-         instruction:[]
+       instruction:[]
   });
   
   const [images,setimages]=useState([]);
   const [imageUpload,setimageUpload]=useState(null);
-  const fileListRef=ref(storage,'files/');
+  const fileListRef=ref(storage,'blogs/');
   // const [imaguploadsuccessfully, setimaguploadsuccessfully] = useState(false);
 
 
@@ -31,7 +31,7 @@ const AddBlog = () => {
       imgUrl: url
   })
     alert("Image was Succesfully Updated");
-    setimageUpload(true);
+    // setimageUpload(true);
   }  
  
   const handleChange = e => {
@@ -58,10 +58,11 @@ const AddBlog = () => {
 
     try{
      if(imageUpload!==null){
-        const imageRef=ref(storage,'files/'+v4()+imageUpload.name);
+       
+        const imageRef=ref(storage,'blogs/'+v4()+imageUpload.name);
         await uploadBytes(imageRef,imageUpload).then((snapshot)=>{
           getDownloadURL(snapshot.ref).then((url)=>{
-            console.log(url); 
+            console.log("mera",url); 
              afterurl(url);
           })
         }) 
@@ -85,12 +86,12 @@ const AddBlog = () => {
    <div>
     <div className="add-area add_event_area" id='add_event_area'>  
            <div >
-                <input type="text" id="" className='eventtitle' placeholder='nameofexp'  onChange={ handleChange } name="nameofexp" value={FormData.nameofexp}/>
-                <input type="text" id="" className='eventtitle' placeholder='description'  onChange={ handleChange } name="description" value={FormData.description}/>
-                <input type="text" id="" className='eventtitle' placeholder='deffcuilty'  onChange={ handleChange } name="deffcuilty" value={FormData.deffcuilty}/>
+                <input type="text" id="" className='eventtitle' placeholder='Name of Experiment'  onChange={ handleChange } name="nameofexp" value={FormData.nameofexp}/>
+                <input type="text" id="" className='eventtitle' placeholder='Description'  onChange={ handleChange } name="description" value={FormData.description}/>
+                <input type="text" id="" className='eventtitle' placeholder='Diffcuilty'  onChange={ handleChange } name="deffcuilty" value={FormData.deffcuilty}/>
                 <input type="text" id="" className='eventtitle' placeholder='subject'  onChange={ handleChange } name="subject" value={FormData.subject}/>
                 <input type="text" id="" className='eventtitle' placeholder='materiallist'  onChange={ handleChange } name="materiallist" value={FormData.materiallist}/>
-                <input type="text" id="" className='eventtitle' placeholder='safety'  onChange={ handleChange } name="safety" value={FormData.safety}/>
+                <input type="text" id="" className='eventtitle' placeholder='Safety'  onChange={ handleChange } name="safety" value={FormData.safety}/>
                 <input type="text" id="" className='eventtitle' placeholder='instruction'  onChange={ handleChange } name="instruction" value={FormData.instruction}/> 
 
                
@@ -99,7 +100,7 @@ const AddBlog = () => {
                   <label htmlFor="event-img">
                     <i className="fa-solid fa-upload"/>
                   </label>
-                  <input type="file" name="event-img" accept="image/png, image/gif, image/jpeg"  onChange={(event)=>{setimageUpload(event.target.files[0])}} />
+                  <input type="file" name="event-img" accept="image/png, image/gif, image/jpeg"  onChange={(e)=>{setimageUpload(e.target.files[0])}} />
                 </div>
                 <button onClick={()=>{submit()}} id='blog-txt-add' >Add</button>
                 <button type="reset">Clear</button>
