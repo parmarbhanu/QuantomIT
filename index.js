@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.use(cors({
     origin: [
+       "http://localhost:5000",
        "http://localhost:3000",
     ],
      credentials: true,
@@ -33,7 +34,7 @@ app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 
 
 const path=require("path");
-app.use(express.static('client/build'));
+app.use(express.static('Client/build'));
  app.get('*', (req, res) => {
-    res.sendFile(path.resolve('client','build','index.html'));
+    res.sendFile(path.resolve('Client','build','index.html'));
 });
