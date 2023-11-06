@@ -37,3 +37,4 @@ app.use(express.static('Client/build'));
  app.get('*', (req, res) => {
     res.sendFile(path.resolve('Client','build','index.html'));
 });
+
