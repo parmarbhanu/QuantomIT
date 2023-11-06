@@ -11,11 +11,19 @@ const Login = (props) =>  {
   })
 
   const [ regi, setregi] = useState({
-    email:"",
-    date:"",
     username:"",
+    date:"",
+    email:"",
     password:"",
 })
+
+const handleCh = e => {
+  const { name, value } = e.target
+  setregi({
+      ...user,
+      [name]: value
+  })
+}
 
   const handleChange = e => {
       const { name, value } = e.target
@@ -41,19 +49,19 @@ const Login = (props) =>  {
 
   // const navigate=useNavigate();
 
-     
-
 
   
   async function register() {
     try {
       const {username,date,email,password}=regi;
        if(!username||!date||!email||!password){
-          alert("Incomplete Details");
-          return;
+          alert("Incomplet Details");
+          // return;
        }
-      await axios.post("/admin/register",user)
-      // .then((res)=>{ setcall_again_getuser(!call_again_getuser);});
+      await axios.post("/admin/register",regi)
+      .catch((err)=>{alert(err)})
+      // .then((res)=>{ ();});
+      // .then((r)=>{history("/AdminBody")})
     } catch (err) {
       console.error(err);
     }
@@ -61,13 +69,6 @@ const Login = (props) =>  {
    
 
   const [issignin, setissignin] = useState(true);
-  // return (
-
-    
-  
-
-
-
   
   return (
   <div className="main">
@@ -78,9 +79,6 @@ const Login = (props) =>  {
        <a className="submit" align="center" onClick={()=>{login()}}>Log in</a> */}
        {/* <a className="submit" align="center" onClick={()=> {navigate(`/adminbody/`)}}>Log in</a> */}
 
-
-
-
          {/* here        */}
          <div className='signin-singup-outer-box'>
       <div className={issignin?"container":"container right-panel-active"}  id="container">
@@ -88,10 +86,10 @@ const Login = (props) =>  {
           <div className='form'>
             <h1 >Create Account</h1>
             <h1 >Sign Up</h1>
-            <input type="text" placeholder="Username" name="username" value={user.username} onChange={ handleChange }/>
-            <input type="email" placeholder="Email" name="email" value={user.email} onChange={ handleChange } />
-            <input type="date" placeholder="Date" name="date" value={user.date} onChange={ handleChange } />
-            <input type="password" placeholder="Password"  name="password" value={user.password} onChange={ handleChange }/>
+            <input type="text" placeholder="Username" name="username" value={regi.username} onChange={ handleCh }/>
+            <input type="email" placeholder="Email" name="email" value={regi.email} onChange={ handleCh } />
+            <input type="date" placeholder="Date" name="date" value={regi.date} onChange={ handleCh} />
+            <input type="password" placeholder="Password"  name="password" value={regi.password} onChange={ handleCh }/>
             <button onClick={()=>{register()}}>Sign Up</button>
           </div>
         </div>
