@@ -4,6 +4,17 @@ const bcrypt = require("bcryptjs");
 const jwt=require("jsonwebtoken");
 
 
+router.get("/alldata", (req, res) => {
+  try {
+      User.find()
+      .then((blg) => res.json(blg))
+      .catch((err) => res.status(400).json("Error: " + err));
+  } catch (err) {
+    res.status(200).send(err);
+  }
+});
+
+
 router.post("/register", async (req, res) => {
   try {
     // console.log(req.body);
@@ -129,5 +140,11 @@ router.get("/isauth", (req, res) => {
     res.json(false);
   }
 });
+
+
+
+
+
+
 
 module.exports=router

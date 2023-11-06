@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './adminbody.css'
 import axios from "axios"
 import { Navigate, useNavigate } from "react-router-dom"
+import Data from './Data';
 
 export default function AdminBody() {
   const [admincontent, setadmincontent] = useState("blog");
@@ -27,13 +28,15 @@ export default function AdminBody() {
   //     console.error(err);
   //   }
   // }
-
-  // const apicall=async ()=>{
-  //   await axios.get(`/contactapi/allmsg`).then((res) => { setQuery(res.data) });
-  // }
-  // useEffect(() => {
-  //   apicall();
-  // }, [])
+  const [data, setdata] = useState([]);
+// console.log(data)
+  const apicall=async ()=>{
+    await axios.get(`/admin/alldata`)
+    .then((res) => { setdata(res.data) });
+  }
+  useEffect(() => {
+    apicall();
+  }, [])
 
   return (
     <div>
@@ -42,7 +45,7 @@ export default function AdminBody() {
         <table>
           <thead>
                <tr>
-                      <th className='no'>S.No</th> 
+                      {/* <th className='no'>S.No</th>  */}
                         <th className='name'>Name</th> 
                         <th  className='date'>Date Created</th>
                         <th  className='role'>Role</th>
@@ -53,6 +56,10 @@ export default function AdminBody() {
          </thead>       
        </table>
        </div>
+       
+       {data.map((item) => {
+         return <Data props={data}/>
+        })}
        <h1>I Get Stuck What Kind of data need to display here So it is empty </h1>
         </div>
   )
