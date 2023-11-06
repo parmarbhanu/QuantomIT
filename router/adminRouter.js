@@ -7,7 +7,7 @@ const jwt=require("jsonwebtoken");
 router.post("/register", async (req, res) => {
   try {
     console.log(req.body);
-    const {username,email,password} = req.body;
+    const {username,date,email,password} = req.body;
     if( !username||!password){
           return res.status(400).json({ errorMessage: "Please enter all required fields." });
     }
@@ -26,6 +26,7 @@ router.post("/register", async (req, res) => {
 
     const newUser = new User({
       username,
+      date,
       email,
       password:passwordHash,
   

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Blog from '../Pages/Blog/Blog'
 import './adminbody.css'
 import axios from "axios"
 import { Navigate, useNavigate } from "react-router-dom"
@@ -28,17 +27,33 @@ export default function AdminBody() {
   //     console.error(err);
   //   }
   // }
+
+  // const apicall=async ()=>{
+  //   await axios.get(`/contactapi/allmsg`).then((res) => { setQuery(res.data) });
+  // }
+  // useEffect(() => {
+  //   apicall();
+  // }, [])
+
   return (
-    <div >
-      <nav className="nav-bar">
-       <div className="left-align">
-         <h1 className="nav-link text-white" style={{fontSize:"24px"}}>Admin Page</h1>
-        </div>
-         <div className="right-align">
-           {/* <button className="nav-link text-white" onClick={()=>{logout()}}>Log out <i className="fa fa-sign-out" aria-hidden="true"></i></button> */}
-          </div>   
-        </nav>
-        <Blog />
+    <div>
+    <h2 className='contactheading'>Response</h2>
+     <div className="query-component">
+        <table>
+          <thead>
+               <tr>
+                      <th className='no'>S.No</th> 
+                        <th className='name'>Name</th> 
+                        <th  className='date'>Date Created</th>
+                        <th  className='role'>Role</th>
+                        <th  className='status'>Status</th>
+                        <th  className='action'>Action</th>
+                 </tr>
+               
+         </thead>       
+       </table>
+       </div>
+       <h1>I Get Stuck What Kind of data need to display here So it is empty </h1>
         </div>
   )
 }

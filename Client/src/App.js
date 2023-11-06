@@ -1,9 +1,8 @@
 import './App.css';
 import { Navigate, Route, Routes, Link } from "react-router-dom";
 import AdminBody from './Admin/AdminBody/AdminBody';
-import Home from './Home/Home';
+// import Home from './Home/Home';
 import Login from './Admin/Pages/Login/Login';
-import Single from './Home/Single';
 
 
 function App() {
@@ -16,10 +15,8 @@ function App() {
     {/* <button onClick={handleButtonClick}>Login</button> */}
  
        <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login/>} />
           <Route path='adminbody' element={<AdminBody/>}/>
-          <Route path='login' element={<Login/>}/>
-          <Route path='single/:id' element={<Single/>}/>
         </Routes>
     </div>
   );

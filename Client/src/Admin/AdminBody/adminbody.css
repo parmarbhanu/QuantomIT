@@ -1,4 +1,4 @@
-.admin-options{
+/* .admin-options{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,4 +43,60 @@
 .right-align{
     display: flex;
     align-items: center;
+} */
+
+.single-query-box{
+    height: 1%;
+      border: 2px solid black;
+    margin: 10px 20px;
+    /* padding: 20px ; */
+     border-radius: 10px;
+    /* display: flex;  */
+    /* justify-content: space-between; */
+  padding: 20px;
 }
+
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
+  .no{
+    width: 5rem;
+  }
+  .name{
+     width: 20rem;
+  }
+  
+  
+  .date{
+    width: 15rem;
+    
+  }
+  
+  .role{
+    width: 15rem;
+  }
+  .status{
+    width: 15rem;
+  }
+  
+  .action{
+    width: 15rem;
+  }
+  
+ 
+  
