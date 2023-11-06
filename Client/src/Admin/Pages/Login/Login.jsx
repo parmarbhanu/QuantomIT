@@ -20,7 +20,7 @@ const Login = (props) =>  {
 const handleCh = e => {
   const { name, value } = e.target
   setregi({
-      ...user,
+      ...regi,
       [name]: value
   })
 }
